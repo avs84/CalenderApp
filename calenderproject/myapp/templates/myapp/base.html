@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My calender</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/myapp/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static '/myapp/css/style.css' %}"/>
+
+
+</head>
+<body>
+
+    <br>
+    <div class="row">
+        <div class="col-lg-8">
+            <h1>Calendar Application</h1>
+            {% if request.user.is_authenticated %}
+            <span>user: {{ request.user.username }}</span>
+            {% endif %}
+        </div>
+        <div class="col-lg-4">
+
+
+            <button class="btn btn-success" onclick="window.location=' {% url 'myapp:index' %}'">Home</button>
+            <button class="btn btn-success" onclick="window.location=' {% url 'myapp:calendar' %}'">My Calendar</button>
+            {% if request.user.is_authenticated %}
+            <button class="btn btn-success" onclick="window.location='{% url 'pip freeclogout' %}'">Logout</button>
+            {% else %}
+            <button class="btn btn-success" onclick="window.location='{% url 'login' %}'">Login</button>
+            {% endif %}
+        </div>
+    </div>
+
+    <hr>
+    {% block content %}
+
+    {% endblock %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static '/myapp/js/calendar.js' %}"></script>
+    <script>
+        var csrf_token = '{{ csrf_token }}'
+    </script>
+</body>
+</html>
