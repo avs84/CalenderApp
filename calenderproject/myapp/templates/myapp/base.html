@@ -26,7 +26,7 @@
             <button class="btn btn-success" onclick="window.location=' {% url 'myapp:index' %}'">Home</button>
             <button class="btn btn-success" onclick="window.location=' {% url 'myapp:calendar' %}'">My Calendar</button>
             {% if request.user.is_authenticated %}
-            <button class="btn btn-success" onclick="window.location='{% url 'pip logout' %}'">Logout</button>
+            <button class="btn btn-success" onclick="window.location='{% url 'logout' %}'">Logout</button>
             {% else %}
             <button class="btn btn-success" onclick="window.location='{% url 'login' %}'">Login</button>
             {% endif %}
